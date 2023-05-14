@@ -10,7 +10,7 @@ import { Message } from '../message.model';
 export class MessageListComponent implements OnInit {
   messages: Message[] = [
     new Message('1', 'Subject 1', 'Message Text 1', 'Brother Belisario'),
-    new Message('2', 'Subject 1', 'Message Text 2', 'Brother Santos'),
+    new Message('2', 'Subject 1', 'Message Text 2', 'Brother Belisario'),
     new Message('3', 'Subject 1', 'Message Text 3', 'Brother Belisario'),
   ];
 
