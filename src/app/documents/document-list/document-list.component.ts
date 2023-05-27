@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
@@ -9,15 +10,19 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-list.component.css'],
 })
 export class DocumentListComponent implements OnInit {
-  documents: Document[] = [];
+  documents: Document[] = []
 
-  constructor(private documentService: DocumentService) {}
-
-  ngOnInit() {
+  constructor(private documentService: DocumentService,
+  private router: ActivatedRoute) {
     this.documents = this.documentService.getDocuments();
   }
 
-  onSelectedDocument(document: Document) {
-    this.documentService.documentSelectedEvent.emit(document);
+  ngOnInit() {
+    this.documentService.documentChangedEvent.subscribe(
+      (documents: Document[]) => {
+        this.documents = documents;
+      }
+    )
   }
 }
+

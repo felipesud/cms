@@ -1,6 +1,7 @@
 {
   "name": "cms",
   "version": "0.0.0",
+  "author": "Felipe Belisario",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
