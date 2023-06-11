@@ -19,14 +19,14 @@ export class ContactService {
   }
 
   getContacts(): Contact[] {
-    console.log('Getting all contacts.');
+    // console.log('Getting all contacts.');
     return this.contacts
       .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
       .slice();
   }
 
   getContact(id: string): Contact | null {
-    console.log('Getting a contact.');
+    // console.log('Getting a contact.');
     return this.contacts.find((c) => c.id === id);
   }
 
@@ -78,7 +78,7 @@ export class ContactService {
 
   // Delete contact will be called by the ContactDetailComponent Delete button
   deleteContact(contact: Contact) {
-    console.log('Deleting a contact.');
+    // console.log('Deleting a contact.');
     if (!contact) {
       return;
     }

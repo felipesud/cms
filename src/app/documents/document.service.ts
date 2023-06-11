@@ -8,7 +8,6 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
   providedIn: 'root',
 })
 export class DocumentService {
-  // documentSelectedEvent = new Subject<Document>();
   documentListChangedEvent = new Subject<Document[]>();
   documents: Document[] = [];
   maxDocumentId: number;
@@ -19,17 +18,14 @@ export class DocumentService {
   }
 
   getDocuments(): Document[] {
-    console.log('Getting all documents.');
     return this.documents.slice();
   }
 
   getDocument(id: string) {
-    console.log('Getting a document.');
     return this.documents.find((document) => document.id === id);
   }
 
   getMaxId(): number {
-    // console.log('Getting the documents maxId.');
     let maxId = 0;
 
     for (const document of this.documents) {
@@ -42,7 +38,6 @@ export class DocumentService {
   }
 
   addDocument(newDocument: Document) {
-    // console.log('Adding a document.');
     if (!newDocument) {
       return;
     }
@@ -55,7 +50,6 @@ export class DocumentService {
   }
 
   updateDocument(originalDocument: Document, newDocument: Document) {
-    // console.log('Updating a document.');
     if (!originalDocument || !newDocument) {
       return;
     }
@@ -73,7 +67,6 @@ export class DocumentService {
   }
 
   deleteDocument(document: Document) {
-    console.log('Deleting a document.');
     if (!document) {
       return;
     }
