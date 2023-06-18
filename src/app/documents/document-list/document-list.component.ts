@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Document } from '../document.model';
@@ -11,24 +10,28 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-list.component.css'],
 })
 export class DocumentListComponent implements OnInit, OnDestroy {
-  documents: Document[] = []
+  documents: Document[] = [];
   private subscription: Subscription;
 
-  constructor(private documentService: DocumentService,
-  private router: ActivatedRoute) {
-    this.documents = this.documentService.getDocuments();
+  constructor(private documentService: DocumentService) {
+    // this.documents = this.documentService.getDocuments();
   }
 
   ngOnInit() {
     this.subscription = this.documentService.documentListChangedEvent.subscribe(
       (documents: Document[]) => {
-        this.documents = documents;
+        if (Array.isArray(documents)) {
+          this.documents = documents;
+        } else {
+          // Handle the error case appropriately
+          console.error('Error retrieving documents:', documents);
+        }
       }
     );
+    this.documentService.getDocuments();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }
-

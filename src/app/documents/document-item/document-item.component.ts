@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { Document } from '../document.model';
 
@@ -9,13 +10,13 @@ import { Document } from '../document.model';
 })
 export class DocumentItemComponent implements OnInit {
   @Input() document: Document;
-  @Output() documentSelected = new EventEmitter<void>();
+  @Output() documentSelected = new Subject<void>();
   
   constructor() {}
 
   ngOnInit() { }
   
   onSelectedDocument() {
-    this.documentSelected.emit();
+    this.documentSelected.next();
   }
 }

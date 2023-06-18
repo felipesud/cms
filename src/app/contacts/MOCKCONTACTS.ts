@@ -121,9 +121,9 @@ export const MOCKCONTACTS: Contact[] = [
   },
   {
     id: '99',
-    name: 'Felipe Belisario',
-    email: 'belisarioF@byui.edu',
-    phone: '203-694-3692',
+    name: 'Jesse Wilson',
+    email: 'wilsonj@byui.edu',
+    phone: '403-555-5541',
     imageUrl: '',
     group: null,
   },
