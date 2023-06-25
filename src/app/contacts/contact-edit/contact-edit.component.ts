@@ -71,11 +71,11 @@ export class ContactEditComponent implements OnInit {
       console.log('Whatever!');
       // this.invalidContact = false;
       if (newContact.id === this.groupContacts[i].id) {
-      return (this.invalidContact = true);
+        return (this.invalidContact = true);
       }
     }
     console.log('Returned false');
-      return (this.invalidContact = false);
+    return (this.invalidContact = false);
   }
 
   addToGroup($event: any) {

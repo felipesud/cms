@@ -14,9 +14,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   term: String;
   private subscription: Subscription;
 
-  constructor(private contactSevice: ContactService) {
-    // this.contacts = this.contactSevice.getContacts();
-  }
+  constructor(private contactSevice: ContactService) {}
 
   ngOnInit() {
     this.subscription = this.contactSevice.contactListChangedEvent.subscribe(
@@ -25,7 +23,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
           this.contacts = contacts;
         } else {
           // Handle the error case appropriately
-          console.error('Error retrieving documents:', contacts);
+          console.error('Error retrieving documents: ', contacts);
         }
       }
     );

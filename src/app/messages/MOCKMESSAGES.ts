@@ -29,3 +29,4 @@ export const MOCKMESSAGES: Message[] = [
     msgText: 'I can meet with you today at 4:00 PM in my office.', 
     sender: '7'}
 ];
+

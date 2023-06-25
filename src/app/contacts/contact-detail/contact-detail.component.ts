@@ -22,7 +22,7 @@ export class ContactDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
       this.contact = this.contactService.getContact(id);
-    })
+    });
   }
 
   onDelete() {

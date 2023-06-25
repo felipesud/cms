@@ -20,7 +20,10 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: DocumentEditComponent },
     ],
   },
-  { path: 'messages', component: MessageListComponent },
+  {
+    path: 'messages',
+    component: MessageListComponent,
+  },
   {
     path: 'contacts',
     component: ContactsComponent,
@@ -33,9 +36,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

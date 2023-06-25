@@ -11,11 +11,11 @@ import { Document } from '../document.model';
 export class DocumentItemComponent implements OnInit {
   @Input() document: Document;
   @Output() documentSelected = new Subject<void>();
-  
+
   constructor() {}
 
-  ngOnInit() { }
-  
+  ngOnInit() {}
+
   onSelectedDocument() {
     this.documentSelected.next();
   }

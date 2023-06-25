@@ -23,13 +23,15 @@ export class DocumentService {
   getDocuments() {
     // return this.documents.slice();
     return (
-      this.http.get<Document[]>(
+      this.http
+        .get<Document[]>(
           'https://felipe-125b2-default-rtdb.firebaseio.com/documents.json'
-        ).subscribe((documents: Document[]) => {
+        )
+        .subscribe((documents: Document[]) => {
           this.documents = documents;
           // this.maxDocumentId = this.getMaxId();
           this.documents.sort((a, b) =>
-            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+            a?.name > b?.name ? 1 : b?.name > a?.name ? -1 : 0
           );
           this.documentListChangedEvent.next(this.documents.slice());
         }),
@@ -69,7 +71,9 @@ export class DocumentService {
     // const documentsListClone = this.documents.slice();
     // this.documentListChangedEvent.next(documentsListClone);
     this.storeDocuments();
-    this.documents.sort((a, b) => (a.name > b.name ? 1 : b.name ? -1 : 0));
+    this.documents.sort((a, b) =>
+      a?.name > b?.name ? 1 : b?.name > a?.name ? -1 : 0
+    );
   }
 
   updateDocument(originalDocument: Document, newDocument: Document) {
@@ -108,10 +112,7 @@ export class DocumentService {
 
   storeDocuments() {
     const documents = JSON.stringify(this.documents);
-    const headers = new HttpHeaders().set(
-      'Content-Type',
-      'application/JsonPipe'
-    );
+    const headers = new HttpHeaders().set('Content-Type', 'application/Json');
     this.http
       .put(
         'https://felipe-125b2-default-rtdb.firebaseio.com/documents.json',
