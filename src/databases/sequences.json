@@ -1,0 +1,8 @@
+[{
+  "_id": {
+    "$oid": "64a3aa8389f85e237dac6429"
+  },
+  "maxDocumentId": 100,
+  "maxMessageId": 101,
+  "maxContactId": 101
+}]

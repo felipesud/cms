@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Contact } from '../contact.model';
-import { ContactService } from '../contact.service';
+import { ContactsService } from '../contacts.service';
 
 @Component({
   selector: 'cms-contact-list',
@@ -14,20 +14,15 @@ export class ContactListComponent implements OnInit, OnDestroy {
   term: String;
   private subscription: Subscription;
 
-  constructor(private contactSevice: ContactService) {}
+  constructor(private contactsSevice: ContactsService) {}
 
   ngOnInit() {
-    this.subscription = this.contactSevice.contactListChangedEvent.subscribe(
+    this.subscription = this.contactsSevice.contactListChangedEvent.subscribe(
       (contacts: Contact[]) => {
-        if (Array.isArray(contacts)) {
-          this.contacts = contacts;
-        } else {
-          // Handle the error case appropriately
-          console.error('Error retrieving documents: ', contacts);
-        }
+        this.contacts = contacts;
       }
     );
-    this.contactSevice.getContacts();
+    this.contactsSevice.getContacts();
   }
 
   ngOnDestroy(): void {

@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 
-import { DocumentService } from '../document.service';
+import { DocumentsService } from '../documents.service';
 import { Document } from '../document.model';
 
 @Component({
@@ -18,7 +18,7 @@ export class DocumentEditComponent implements OnInit {
   documentForm: FormGroup;
 
   constructor(
-    private documentService: DocumentService,
+    private documentsService: DocumentsService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -32,7 +32,7 @@ export class DocumentEditComponent implements OnInit {
         return;
       }
 
-      this.originalDocument = this.documentService.getDocument(this.id);
+      this.originalDocument = this.documentsService.getDocument(this.id);
 
       if (!this.originalDocument) {
         return;
@@ -41,7 +41,6 @@ export class DocumentEditComponent implements OnInit {
       this.editMode = true;
 
       this.document = JSON.parse(JSON.stringify(this.originalDocument));
-      // console.log(this.document);
     });
   }
 
@@ -60,9 +59,9 @@ export class DocumentEditComponent implements OnInit {
     );
 
     if (this.editMode) {
-      this.documentService.updateDocument(this.originalDocument, newDocument);
+      this.documentsService.updateDocument(this.originalDocument, newDocument);
     } else {
-      this.documentService.addDocument(newDocument);
+      this.documentsService.addDocument(newDocument);
     }
     this.router.navigate(['/documents']);
   }
